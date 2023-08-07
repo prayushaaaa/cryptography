@@ -132,10 +132,21 @@ bool isValidText(string text) {
     return true;
 }
 
+void visualizeMatrix(const char matrix[5][5]) {
+    cout << "Playfair Cipher Matrix:" << endl;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
 int main() {
     int choice;
     string text;
     string key;
+    char matrix[5][5]; // Define the matrix here
 
     cout << "Name: Prayusha Acharya" << endl;
     cout << "Roll no: 1023" << endl;
@@ -165,6 +176,9 @@ int main() {
                 continue;
             }
 
+            generateMatrix(key, matrix); 
+            visualizeMatrix(matrix);
+
             cout << "Cipher text: " << encrypt(text, key) << endl;
         } else if (choice == 2) {
             cout << "Enter cipher text string: ";
@@ -181,6 +195,8 @@ int main() {
                 cout << "Insert only alphabets!" << endl;
                 continue;
             }
+            generateMatrix(key, matrix); 
+            visualizeMatrix(matrix); 
 
             cout << "Plain text: " << decrypt(text, key) << endl;
         } else if (choice == 3) {
